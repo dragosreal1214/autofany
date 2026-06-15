@@ -268,26 +268,13 @@ button { font-family: inherit; cursor: pointer; }
 
 .sim-visual { position: relative; }
 .sim-screen { position: relative; aspect-ratio: 4 / 3; border-radius: var(--radius-lg); overflow: hidden; background: #0a1430; border: 1px solid rgba(255,255,255,.12); box-shadow: 0 30px 70px rgba(0,0,0,.45), 0 0 0 6px rgba(255,255,255,.03); }
-.sim-sky { position: absolute; inset: 0 0 46% 0; background: linear-gradient(180deg, #122145 0%, #2a2f63 52%, #6a4f86 86%, #b06a4e 100%); }
-.sim-horizon { position: absolute; left: 0; right: 0; top: 54%; height: 2px; background: linear-gradient(90deg, transparent, rgba(244,180,26,.9), transparent); box-shadow: 0 0 26px 6px rgba(244,180,26,.32); }
-.sim-road { position: absolute; inset: 54% 0 0 0; background: linear-gradient(180deg, #1c2742, #0b1426); clip-path: polygon(40% 0, 60% 0, 100% 100%, 0 100%); overflow: hidden; }
-.sim-lines { position: absolute; left: 50%; top: -12%; width: 7%; height: 130%; transform: translateX(-50%); background: repeating-linear-gradient(to bottom, var(--yellow) 0 9%, transparent 9% 22%); animation: simDash .6s linear infinite; }
-@keyframes simDash { to { transform: translate(-50%, 20%); } }
+.sim-screen img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.sim-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,16,38,.28) 0%, transparent 32%, rgba(7,16,38,.55) 100%); }
 .sim-tag { position: absolute; top: 14px; left: 14px; display: inline-flex; align-items: center; gap: .45rem; background: rgba(7,16,38,.7); border: 1px solid rgba(255,255,255,.14); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); color: #fff; font-family: var(--font-head); font-weight: 600; font-size: .76rem; padding: .35rem .7rem; border-radius: 100px; }
 .sim-hud { position: absolute; bottom: 16px; left: 16px; display: flex; align-items: flex-end; gap: 1rem; }
 .sim-speed { display: flex; align-items: baseline; gap: .25rem; background: rgba(7,16,38,.65); border: 1px solid rgba(255,255,255,.14); border-radius: 12px; padding: .5rem .8rem; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
 .sim-speed strong { font-family: var(--font-head); font-size: 1.7rem; font-weight: 800; color: var(--yellow); line-height: 1; }
 .sim-speed span { font-size: .72rem; color: rgba(255,255,255,.7); }
-.sim-bars { display: flex; align-items: flex-end; gap: 4px; height: 36px; }
-.sim-bars i { width: 6px; border-radius: 3px; background: var(--yellow); opacity: .85; transform-origin: bottom; animation: simBars 1s ease-in-out infinite; }
-.sim-bars i:nth-child(1) { height: 40%; animation-delay: 0s; }
-.sim-bars i:nth-child(2) { height: 70%; animation-delay: .12s; }
-.sim-bars i:nth-child(3) { height: 100%; animation-delay: .24s; }
-.sim-bars i:nth-child(4) { height: 58%; animation-delay: .36s; }
-.sim-bars i:nth-child(5) { height: 82%; animation-delay: .48s; }
-@keyframes simBars { 0%, 100% { transform: scaleY(.55); } 50% { transform: scaleY(1); } }
-.sim-wheel { position: absolute; bottom: 16px; right: 18px; color: rgba(255,255,255,.85); filter: drop-shadow(0 4px 10px rgba(0,0,0,.5)); animation: simWheel 4s ease-in-out infinite; }
-@keyframes simWheel { 0%, 100% { transform: rotate(-8deg); } 50% { transform: rotate(8deg); } }
 .sim-chip { position: absolute; top: -14px; right: 22px; background: #fff; color: var(--navy); font-family: var(--font-head); font-weight: 800; font-size: .8rem; padding: .5rem .9rem; border-radius: 100px; box-shadow: var(--shadow-lg); z-index: 2; }
 
 /* ---------- Parc auto (fleet) ---------- */
