@@ -111,6 +111,9 @@ button { font-family: inherit; cursor: pointer; }
   color: var(--fg-soft); transition: color .15s ease, background .15s ease;
 }
 .main-nav a:hover { color: var(--navy); background: var(--yellow-soft); }
+.main-nav a.nav-accent { color: var(--gold); font-weight: 700; }
+.main-nav a.nav-accent::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--yellow); margin-right: .35rem; vertical-align: middle; }
+.main-nav a.nav-accent:hover { color: var(--navy); background: var(--yellow-soft); }
 
 .header-actions { display: flex; align-items: center; gap: .7rem; }
 .header-phone { display: inline-flex; align-items: center; gap: .45rem; font-weight: 600; font-size: .92rem; color: var(--navy); padding: .45rem .6rem; border-radius: 9px; }
@@ -241,6 +244,51 @@ button { font-family: inherit; cursor: pointer; }
 .course-popular { position: absolute; top: 1.3rem; right: 1.3rem; background: var(--yellow); color: var(--navy); font-family: var(--font-head); font-weight: 700; font-size: .72rem; padding: .3rem .7rem; border-radius: 100px; }
 .course-card-soft { background: linear-gradient(150deg, var(--yellow-soft), rgba(254,243,212,.3)); border-color: rgba(244,180,26,.4); }
 .course-card-soft .course-icon { background: var(--yellow); color: var(--navy); }
+
+/* ---------- Simulator (spotlight) ---------- */
+.sim { position: relative; background: linear-gradient(165deg, #0B1B3F 0%, #06122B 100%); color: #fff; padding: 96px 0; overflow: hidden; isolation: isolate; }
+.sim-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(600px 420px at 88% 6%, rgba(244,180,26,.22), transparent 62%),
+    radial-gradient(640px 480px at 4% 100%, rgba(21,101,216,.16), transparent 60%);
+}
+.sim-bg::after { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px); background-size: 46px 46px; mask-image: radial-gradient(circle at 70% 45%, #000, transparent 75%); }
+.sim-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+
+.sim-badge { display: inline-flex; align-items: center; gap: .5rem; background: var(--yellow); color: var(--navy); font-family: var(--font-head); font-weight: 700; font-size: .82rem; padding: .45rem .95rem; border-radius: 100px; margin-bottom: 1.3rem; box-shadow: 0 8px 22px rgba(244,180,26,.35); }
+.sim-content h2 { color: #fff; font-size: clamp(1.9rem, 3.6vw, 2.7rem); margin-bottom: 1.1rem; }
+.sim-hl { color: var(--yellow); position: relative; white-space: nowrap; }
+.sim-hl::after { content: ""; position: absolute; left: 0; right: 0; bottom: .04em; height: .14em; background: var(--yellow); opacity: .5; border-radius: 4px; }
+.sim-content > p { color: rgba(255,255,255,.8); font-size: 1.08rem; max-width: 520px; margin-bottom: 1.6rem; }
+.sim-content > p strong { color: #fff; }
+.sim-points { display: grid; gap: .8rem; margin-bottom: 2rem; }
+.sim-points li { display: flex; align-items: center; gap: .75rem; font-weight: 500; color: rgba(255,255,255,.92); }
+.sim-ic { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 8px; background: rgba(244,180,26,.16); color: var(--yellow); flex-shrink: 0; }
+.sim-cta { display: flex; gap: .9rem; flex-wrap: wrap; }
+
+.sim-visual { position: relative; }
+.sim-screen { position: relative; aspect-ratio: 4 / 3; border-radius: var(--radius-lg); overflow: hidden; background: #0a1430; border: 1px solid rgba(255,255,255,.12); box-shadow: 0 30px 70px rgba(0,0,0,.45), 0 0 0 6px rgba(255,255,255,.03); }
+.sim-sky { position: absolute; inset: 0 0 46% 0; background: linear-gradient(180deg, #122145 0%, #2a2f63 52%, #6a4f86 86%, #b06a4e 100%); }
+.sim-horizon { position: absolute; left: 0; right: 0; top: 54%; height: 2px; background: linear-gradient(90deg, transparent, rgba(244,180,26,.9), transparent); box-shadow: 0 0 26px 6px rgba(244,180,26,.32); }
+.sim-road { position: absolute; inset: 54% 0 0 0; background: linear-gradient(180deg, #1c2742, #0b1426); clip-path: polygon(40% 0, 60% 0, 100% 100%, 0 100%); overflow: hidden; }
+.sim-lines { position: absolute; left: 50%; top: -12%; width: 7%; height: 130%; transform: translateX(-50%); background: repeating-linear-gradient(to bottom, var(--yellow) 0 9%, transparent 9% 22%); animation: simDash .6s linear infinite; }
+@keyframes simDash { to { transform: translate(-50%, 20%); } }
+.sim-tag { position: absolute; top: 14px; left: 14px; display: inline-flex; align-items: center; gap: .45rem; background: rgba(7,16,38,.7); border: 1px solid rgba(255,255,255,.14); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); color: #fff; font-family: var(--font-head); font-weight: 600; font-size: .76rem; padding: .35rem .7rem; border-radius: 100px; }
+.sim-hud { position: absolute; bottom: 16px; left: 16px; display: flex; align-items: flex-end; gap: 1rem; }
+.sim-speed { display: flex; align-items: baseline; gap: .25rem; background: rgba(7,16,38,.65); border: 1px solid rgba(255,255,255,.14); border-radius: 12px; padding: .5rem .8rem; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.sim-speed strong { font-family: var(--font-head); font-size: 1.7rem; font-weight: 800; color: var(--yellow); line-height: 1; }
+.sim-speed span { font-size: .72rem; color: rgba(255,255,255,.7); }
+.sim-bars { display: flex; align-items: flex-end; gap: 4px; height: 36px; }
+.sim-bars i { width: 6px; border-radius: 3px; background: var(--yellow); opacity: .85; transform-origin: bottom; animation: simBars 1s ease-in-out infinite; }
+.sim-bars i:nth-child(1) { height: 40%; animation-delay: 0s; }
+.sim-bars i:nth-child(2) { height: 70%; animation-delay: .12s; }
+.sim-bars i:nth-child(3) { height: 100%; animation-delay: .24s; }
+.sim-bars i:nth-child(4) { height: 58%; animation-delay: .36s; }
+.sim-bars i:nth-child(5) { height: 82%; animation-delay: .48s; }
+@keyframes simBars { 0%, 100% { transform: scaleY(.55); } 50% { transform: scaleY(1); } }
+.sim-wheel { position: absolute; bottom: 16px; right: 18px; color: rgba(255,255,255,.85); filter: drop-shadow(0 4px 10px rgba(0,0,0,.5)); animation: simWheel 4s ease-in-out infinite; }
+@keyframes simWheel { 0%, 100% { transform: rotate(-8deg); } 50% { transform: rotate(8deg); } }
+.sim-chip { position: absolute; top: -14px; right: 22px; background: #fff; color: var(--navy); font-family: var(--font-head); font-weight: 800; font-size: .8rem; padding: .5rem .9rem; border-radius: 100px; box-shadow: var(--shadow-lg); z-index: 2; }
 
 /* ---------- Parc auto (fleet) ---------- */
 .fleet-main { display: grid; grid-template-columns: 1.05fr 1fr; gap: 0; background: #fff; border: 1px solid var(--border); border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow); margin-bottom: 28px; }
@@ -444,6 +492,8 @@ button { font-family: inherit; cursor: pointer; }
   .about-inner { grid-template-columns: 1fr; gap: 48px; }
   .about-media { max-width: 440px; margin: 0 auto; }
   .contact-inner { grid-template-columns: 1fr; gap: 36px; }
+  .sim-inner { grid-template-columns: 1fr; gap: 42px; }
+  .sim-visual { max-width: 480px; }
   .float-call { display: grid; }
 }
 

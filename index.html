@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=2" />
+  <link rel="stylesheet" href="styles.css?v=3" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230B1B3F'/><text x='50' y='68' font-size='58' font-family='Arial' font-weight='bold' fill='%23F4B41A' text-anchor='middle'>F</text></svg>" />
 </head>
 <body>
@@ -40,9 +40,10 @@
       <nav class="main-nav" aria-label="Navigație principală">
         <ul>
           <li><a href="#cursuri">Cursuri</a></li>
+          <li><a href="#simulator" class="nav-accent">Simulator</a></li>
           <li><a href="#parc">Parc auto</a></li>
           <li><a href="#avantaje">De ce noi</a></li>
-          <li><a href="#pasi">Cum obții permisul</a></li>
+          <li><a href="#pasi">Pași</a></li>
           <li><a href="#preturi">Prețuri</a></li>
           <li><a href="#despre">Despre</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -65,6 +66,7 @@
     <div class="mobile-nav" id="mobileNav" aria-hidden="true">
       <ul>
         <li><a href="#cursuri">Cursuri</a></li>
+        <li><a href="#simulator">Simulator auto</a></li>
         <li><a href="#parc">Parc auto</a></li>
         <li><a href="#avantaje">De ce noi</a></li>
         <li><a href="#pasi">Cum obții permisul</a></li>
@@ -235,6 +237,58 @@
             <p>Ședințe de conducere pentru redobândirea încrederii la volan, după o pauză lungă. Ritmul tău, instructorul tău.</p>
             <a href="#contact" class="course-link">Programează o ședință →</a>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SIMULATOR ============ -->
+    <section class="sim" id="simulator">
+      <div class="sim-bg" aria-hidden="true"></div>
+      <div class="container sim-inner">
+        <div class="sim-content reveal">
+          <span class="sim-badge">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1z"/></svg>
+            Singura școală cu simulator din Iași
+          </span>
+          <h2>Începi pe <span class="sim-hl">simulatorul auto</span>, nu direct în trafic</h2>
+          <p>AutoFany este <strong>singura școală de șoferi din Iași</strong> care te pregătește pe simulator auto. Exersezi comenzile, reflexele și situațiile de risc în siguranță deplină — așa ajungi calm și sigur pe tine la prima ședință de condus real.</p>
+          <ul class="sim-points">
+            <li>
+              <span class="sim-ic"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+              Situații de risc, exersate în siguranță deplină
+            </li>
+            <li>
+              <span class="sim-ic"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+              Reflexe și coordonare formate încă de la început
+            </li>
+            <li>
+              <span class="sim-ic"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+              Mult mai puține emoții la primul condus în oraș
+            </li>
+            <li>
+              <span class="sim-ic"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+              Inclus în pregătirea pentru categoria B
+            </li>
+          </ul>
+          <div class="sim-cta">
+            <a href="#contact" class="btn btn-primary btn-lg">Vreau să încep pe simulator</a>
+            <a href="#preturi" class="btn btn-glass btn-lg">Vezi pachetele</a>
+          </div>
+        </div>
+
+        <div class="sim-visual reveal" aria-hidden="true">
+          <div class="sim-screen">
+            <div class="sim-sky"></div>
+            <div class="sim-horizon"></div>
+            <div class="sim-road"><span class="sim-lines"></span></div>
+            <span class="sim-tag"><span class="pulse"></span> Simulator activ</span>
+            <div class="sim-hud">
+              <div class="sim-speed"><strong>58</strong><span>km/h</span></div>
+              <div class="sim-bars"><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+            <svg class="sim-wheel" viewBox="0 0 24 24" width="58" height="58" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.6"/><path d="M12 9.4V3.2M9.7 13.6 4.5 17M14.3 13.6 19.5 17"/></svg>
+          </div>
+          <div class="sim-chip">★ Unic în Iași</div>
         </div>
       </div>
     </section>
