@@ -4,14 +4,51 @@
 (function () {
   'use strict';
 
-  /* ---- Header: umbră la scroll ---- */
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- Header: umbră + bară de progres la scroll ---- */
   var header = document.getElementById('header');
+  var progress = document.getElementById('scrollProgress');
   function onScroll() {
-    if (window.scrollY > 8) header.classList.add('scrolled');
+    var y = window.scrollY || window.pageYOffset;
+    if (y > 8) header.classList.add('scrolled');
     else header.classList.remove('scrolled');
+    if (progress) {
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+    }
   }
   window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
   onScroll();
+
+  /* ---- Cuvânt rotativ în hero ---- */
+  var rotator = document.getElementById('rotatorWord');
+  if (rotator) {
+    var words = ['categoria B', 'categoria A', 'categoria BE', 'categoria CE', 'categoria D'];
+    var ri = 0;
+    setInterval(function () {
+      ri = (ri + 1) % words.length;
+      rotator.classList.remove('swap');
+      void rotator.offsetWidth; /* reflow pentru a reporni animația */
+      rotator.textContent = words[ri];
+      rotator.classList.add('swap');
+    }, 2400);
+  }
+
+  /* ---- Tilt 3D subtil pe carduri (doar pointer fin) ---- */
+  if (!prefersReduced && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    var tiltCards = document.querySelectorAll('.course-card, .fleet-card, .feature-card');
+    tiltCards.forEach(function (card) {
+      card.addEventListener('mousemove', function (e) {
+        var r = card.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width - 0.5;
+        var py = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = 'perspective(900px) rotateX(' + (-py * 4).toFixed(2) + 'deg) rotateY(' + (px * 4).toFixed(2) + 'deg) translateY(-5px)';
+      });
+      card.addEventListener('mouseleave', function () { card.style.transform = ''; });
+    });
+  }
 
   /* ---- Meniu mobil ---- */
   var navToggle = document.getElementById('navToggle');
@@ -53,7 +90,6 @@
 
   /* ---- Contoare animate ---- */
   var counters = document.querySelectorAll('[data-count]');
-  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function animateCount(el) {
     var target = parseInt(el.getAttribute('data-count'), 10);
